@@ -27,6 +27,19 @@ async def test_get_response_knowledge_base_match():
 
 
 @pytest.mark.asyncio
+@patch.dict(os.environ, {"OPENAI_API_KEY": "fake-api-key"}, clear=True)
+@patch("agent.AsyncOpenAI")
+async def test_get_response_kb_match_does_not_call_llm(mock_async_openai):
+    """Test that KB matches short-circuit and never call the LLM."""
+    question = QUESTIONS_AND_ANSWERS[0]["question"]
+    expected_answer = QUESTIONS_AND_ANSWERS[0]["answer"]
+
+    response = await get_response(question)
+    assert response == expected_answer
+    mock_async_openai.assert_not_called()
+
+
+@pytest.mark.asyncio
 @patch.dict(os.environ, {}, clear=True)
 async def test_get_response_no_match_no_api_key():
     """Test that an unknown question without an API key returns the static fallback."""
