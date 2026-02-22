@@ -1,4 +1,3 @@
-import pytest
 from knowledge_base import find_best_match, QUESTIONS_AND_ANSWERS
 
 
