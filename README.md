@@ -2,6 +2,10 @@
 
 A conversational AI agent that answers common questions about **Thoughtful AI's** healthcare automation products (EVA, CAM, PHIL) using a predefined knowledge base and fuzzy string matching.
 
+## Requirements
+
+- Python 3.10+ recommended
+
 ## Quick Start
 
 ```bash
@@ -11,7 +15,8 @@ cd thoughtful-ai-agent
 
 # 2. Create a virtual environment (recommended)
 python -m venv .venv
-.venv\Scripts\activate   # Windows
+# .venv\Scripts\Activate.ps1  # Windows (PowerShell)
+# .venv\Scripts\activate      # Windows (CMD)
 # source .venv/bin/activate  # macOS / Linux
 
 # 3. Install dependencies
@@ -24,7 +29,8 @@ cp .env.example .env               # macOS / Linux (or Git Bash)
 # copy .env.example .env           # Windows CMD
 # Or set it directly in your terminal:
 # export OPENAI_API_KEY="your-api-key-here"  # macOS / Linux
-# set OPENAI_API_KEY="your-api-key-here"     # Windows
+# $env:OPENAI_API_KEY="your-api-key-here"    # Windows (PowerShell)
+# set OPENAI_API_KEY="your-api-key-here"     # Windows (CMD)
 
 # 5. Run the app
 chainlit run app.py
@@ -37,8 +43,10 @@ The Chainlit UI will open automatically at **http://localhost:8000**.
 | File | Purpose |
 |---|---|
 | `knowledge_base.py` | Predefined Q&A dataset and fuzzy-match retrieval logic |
-| `agent.py` | Agent routing – knowledge base lookup with static fallback |
+| `agent.py` | Agent routing – knowledge base lookup with optional OpenAI fallback |
 | `app.py` | Chainlit chat UI entry point |
+| `test_knowledge_base.py` | Unit tests for retrieval logic |
+| `test_agent.py` | Unit tests for agent responses |
 | `requirements.txt` | Python dependencies |
 
 ## How It Works
@@ -56,3 +64,9 @@ The Chainlit UI will open automatically at **http://localhost:8000**.
 - *How does the payment posting agent (PHIL) work?*
 - *Tell me about Thoughtful AI's Agents.*
 - *What are the benefits of using Thoughtful AI's agents?*
+
+## Tests
+
+```bash
+pytest
+```
