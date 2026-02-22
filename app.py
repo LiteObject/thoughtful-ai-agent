@@ -5,6 +5,10 @@ Run with:
     chainlit run app.py
 """
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 import chainlit as cl
 from agent import get_response
 
