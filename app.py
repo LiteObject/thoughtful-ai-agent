@@ -1,16 +1,15 @@
-"""
-Chainlit chat application for the Thoughtful AI customer support agent.
+"""Chainlit chat application for the Thoughtful AI customer support agent.
 
 Run with:
     chainlit run app.py
 """
 
+import chainlit as cl
 from dotenv import load_dotenv
 
-load_dotenv()
-
-import chainlit as cl
 from agent import get_response
+
+load_dotenv()
 
 
 WELCOME_MESSAGE = (

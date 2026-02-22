@@ -19,7 +19,9 @@ pip install -r requirements.txt
 
 # 4. (Optional) Set OpenAI API key for generic LLM fallback
 # Copy the example env file and add your key
-cp .env.example .env
+cp .env.example .env               # macOS / Linux (or Git Bash)
+# Copy-Item .env.example .env      # Windows PowerShell
+# copy .env.example .env           # Windows CMD
 # Or set it directly in your terminal:
 # export OPENAI_API_KEY="your-api-key-here"  # macOS / Linux
 # set OPENAI_API_KEY="your-api-key-here"     # Windows
